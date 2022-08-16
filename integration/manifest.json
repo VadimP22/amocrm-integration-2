@@ -1,0 +1,41 @@
+{
+    "widget": {
+      "name": "widget.name",
+      "description": "widget.description",
+      "short_description": "widget.short_description",
+      "version": "1.0.0",
+      "interface_version": 2,
+      "init_once": false,
+      "locale": [
+        "ru"
+      ],
+      "installation": true,
+      "support": {
+        "link": "https://www.amocrm.com",
+        "email": "support@amocrm.com"
+      }
+    },
+    "settings": {
+      "login": {
+        "name": "settings.login",
+
+        "type": "text",
+
+        "required": false
+      },
+      "password": {
+        "name": "settings.password",
+
+        "type": "pass",
+
+        "required": false
+      }
+    },
+    "locations": [
+      "lcard",
+      "advanced_settings"
+    ],
+    "advanced": {
+      "title": "advanced.title"
+    }
+  }
