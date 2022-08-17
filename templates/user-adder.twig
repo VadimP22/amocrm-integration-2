@@ -11,7 +11,7 @@
         {% set hiddenclass = "hidden" %}
     {% endif %}
 
-    <div id="{{prefix ~ '-user-adder-list-root'}}" class="{{hiddenclass}} z-50 fixed bg-white mt-2 overflow-y-scroll h-44" style="width: inherit;">
+    <div id="{{prefix ~ '-user-adder-list-root'}}" class="{{hiddenclass}} z-50 fixed bg-white mt-2 overflow-y-scroll h-44">
     {% for item in items %}
         {% set style = "" %}
         {% if item.isSelected %}
