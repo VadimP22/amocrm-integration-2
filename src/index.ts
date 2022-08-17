@@ -11,6 +11,9 @@ import { UserAdderItem } from "./components/user-adder/interfaces";
 import { UserAdderController } from "./controllers/user-adder-controller/controller";
 import { Modal } from "./components/modal/component";
 import { createContractSelect } from "./components/contract-select/component";
+import { GroupEditor } from "./components/group-editor/component";
+import { GroupItem } from "./components/group-editor/interfaces";
+import { GroupEditorController } from "./controllers/group-editor-controller/controller";
 
 
 declare function _define(arg0: string[], arg1: ($: any) => () => any): void
@@ -78,8 +81,10 @@ _define(['jquery'], function ($: any) {
                 modalButton3.className = buttonStyle
                 workArea.appendChild(modalButton3)
 
+                let modal4 = new Modal({render}, "md-4")
                 let modalButton4 = document.createElement("button")
                 modalButton4.style.marginLeft = "30px"
+                modalButton4.onclick = () => {modal4.switchVisibility()}
                 modalButton4.innerHTML = "Редактор групп"
                 modalButton4.className = buttonStyle
                 workArea.appendChild(modalButton4)
@@ -96,6 +101,11 @@ _define(['jquery'], function ($: any) {
                 let userAdder = new UserAdder({render}, "ua-1")
                 userAdder.mount(modal3.getContentNode())
                 let userAdderController = new UserAdderController(userAdder)
+
+                let groupEditor = new GroupEditor({render}, "ge-1")
+                groupEditor.mount(modal4.getContentNode())
+                let groupEditorController = new GroupEditorController(groupEditor)
+                groupEditorController.process()
 
                 $.get(`/api/v4/leads`).done((response: any) => {
                     console.log(response._embedded.leads)

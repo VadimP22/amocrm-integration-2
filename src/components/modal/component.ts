@@ -10,7 +10,7 @@ export class Modal {
         }
 
         this.div = document.createElement("div")
-        this.div.className = "hidden flex fixed top-0 bottom-0 left-0 right-0 w-full h-full bg-gray-900/40 backdrop-blur-sm"
+        this.div.className = "hidden z-50 flex fixed top-0 bottom-0 left-0 right-0 w-full h-full bg-gray-900/40 backdrop-blur-sm"
         this.div.innerHTML = this.ctx.render(template, {prefix: this.uniquePrefix, bg: bg})
 
         document.body.appendChild(this.div)

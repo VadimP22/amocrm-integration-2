@@ -1,0 +1,15 @@
+<div class="overflow-y-scroll w-full h-44">
+    {% for item in items %}
+    <div class="flex justify-between w-full">
+        <div>{{item.name}}</div>
+        <p id="{{prefix ~ '-remove-btn-' ~ item.key}}" class="text-red-500 font-semibold cursor-pointer">удалить</p>
+    </div>
+    {% endfor %}
+    <div class="flex justify-between w-full">
+        <div><input id="{{prefix ~ '-add-input'}}" type="text" placeholder="Введите название..."></input></div>
+        <p id="{{prefix ~ '-add-btn'}}" class="text-green-500 font-semibold cursor-pointer">добавить</p>
+    </div>
+    <div class="mt-4">
+        <p id="{{prefix ~ '-save-btn'}}" class="text-blue-500 font-semibold cursor-pointer">Сохранить</p>
+    </div>
+</div>
