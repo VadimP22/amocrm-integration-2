@@ -6,7 +6,9 @@ import style from "../styles/output.css"
 import { UserSelector } from "./components/user-selector/component";
 import { UserSelectorItem } from "./components/user-selector/interfaces";
 import { UserSelectorController } from "./controllers/user-selector-controller/controller";
-
+import { UserAdder } from "./components/user-adder/component";
+import { UserAdderItem } from "./components/user-adder/interfaces";
+import { UserAdderController } from "./controllers/user-adder-controller/controller";
 
 
 declare function _define(arg0: string[], arg1: ($: any) => () => any): void
@@ -39,10 +41,10 @@ _define(['jquery'], function ($: any) {
             render: function () {
                 if (self.system().area == 'lcard') {
                     console.log("lcard render")
-                    let usc = new UserSelector({render}, "aae")
+                    let usa = new UserAdder({render}, "aae")
                     let el = document.querySelector("#new_company_form")
-                    usc.mount(el)
-                    let ctr = new UserSelectorController(usc)
+                    usa.mount(el)
+                    let ctr = new UserAdderController(usa)
                     ctr.setContractId("717515")
                 }
 

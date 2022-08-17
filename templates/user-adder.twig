@@ -1,0 +1,30 @@
+<div class="w-full">
+    {% set count = 0 %}
+    {% for item in items if not break %}
+        {% if item.isSelected %}
+            {% set count = count + 1 %}
+        {% endif %}
+    {% endfor %}
+    <p id="{{prefix ~ '-user-adder-title'}}" class="font-semibold cursor-pointer">{{"Участники: " ~ count}}</p>
+    {% set hiddenclass = "" %}
+    {% if isListHidden %}
+        {% set hiddenclass = "hidden" %}
+    {% endif %}
+
+    <div id="{{prefix ~ '-user-adder-list-root'}}" class="{{hiddenclass}} z-50 fixed bg-white mt-2 overflow-y-scroll h-44" style="width: inherit;">
+    {% for item in items %}
+        {% set style = "" %}
+        {% if item.isSelected %}
+            {% set style = "background-color: #66e396;" %}
+        {% endif %}
+        {% if item.type == 'user' %}
+        <div id="{{prefix ~ "-user-adder-item-" ~ item.key}}" class="group flex items-center justify-between cursor-pointer text-gray-600 border-2 border-transparent hover:border-slate-300 font-sans font-semibold px-4 py-2 bg-white z-50 hover:bg-slate-200 w-full">
+            <p class="bg-white group-hover:bg-gray-200">{{item.text}}</p>
+            <div style="{{style}}" class="bg-gray-300 w-4 h-4 rounded-full"></div>
+        </div>
+        {% else %}
+        <div class="cursor-default text-gray-600 border-2 border-transparent font-sans font-semibold px-4 py-2 bg-gray-300 z-50">{{item.text}}</div>
+        {% endif %}
+    {% endfor %}
+    </div>
+</div>
