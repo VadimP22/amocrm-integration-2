@@ -5,20 +5,9 @@ import { render } from "./devutils/render";
 import style from "../styles/output.css"
 import { UserSelector } from "./components/user-selector/component";
 import { UserSelectorItem } from "./components/user-selector/interfaces";
+import { UserSelectorController } from "./controllers/user-selector-controller/controller";
 
 
-
-let el = document.getElementById("11")
-let us = new UserSelector({render}, "us1")
-let items: Array<UserSelectorItem> = [
-    {key: "g1", type: "group", text: "group1"},
-    {key: "u1", type: "user", text: "user1"},
-    {key: "u2", type: "user", text: "user2"},
-] 
-console.log("el", el)
-console.log("us", us)
-us.mount(el)
-us.setItems(items, "u1")
 
 declare function _define(arg0: string[], arg1: ($: any) => () => any): void
 _define(['jquery'], function ($: any) {
@@ -50,10 +39,10 @@ _define(['jquery'], function ($: any) {
             render: function () {
                 if (self.system().area == 'lcard') {
                     console.log("lcard render")
-                    let csb = new ContractStatusBar({render}, "sb1")
-                    let el = document.querySelector("#edit_card > div > div.card-entity-form__top > div.linked-form__field.linked-form__field_status.linked-form__field_status-lead")
-                    csb.mount(el)
-                    let ctr = new ContractStatusBarController(csb)
+                    let usc = new UserSelector({render}, "aae")
+                    let el = document.querySelector("#new_company_form")
+                    usc.mount(el)
+                    let ctr = new UserSelectorController(usc)
                     ctr.setContractId("717515")
                 }
 
