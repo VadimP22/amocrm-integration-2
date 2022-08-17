@@ -1,6 +1,8 @@
-import { ContractStatusBar } from "./components/contract-status-bar";
-import { StatusBarItem } from "./components/contract-status-bar/interfaces";
+import { ContractStatusBar } from "./components/contract-status-bar-component/component";
+import { StatusBarItem } from "./components/contract-status-bar-component/interfaces";
+import { ContractStatusBarController } from "./controllers/contract-status-bar-controller/controller";
 import { render } from "./devutils/render";
+import style from "../styles/output.css"
 
 
 declare function _define(arg0: string[], arg1: ($: any) => () => any): void
@@ -17,7 +19,7 @@ _define(['jquery'], function ($: any) {
 
             init: function () {
                 console.log("init")
-
+                $('<script src="https://cdn.tailwindcss.com"></script>').appendTo("head");
                 return true;
             },
 
@@ -34,15 +36,10 @@ _define(['jquery'], function ($: any) {
                 if (self.system().area == 'lcard') {
                     console.log("lcard render")
                     let csb = new ContractStatusBar({render}, "sb1")
-                    let items: Array<StatusBarItem> = [
-                        {key: "k1", text: "hello1", color: "red"},
-                        {key: "k2", text: "hello2", color: "green"},
-                        {key: "k3", text: "hello3", color: "blue"}
-                    ]
                     let el = document.querySelector("#edit_card > div > div.card-entity-form__top > div.linked-form__field.linked-form__field_status.linked-form__field_status-lead")
-                    console.log("el", el)
                     csb.mount(el)
-                    csb.setItems(items, "k2")
+                    let ctr = new ContractStatusBarController(csb)
+                    ctr.setContractId("717515")
                 }
 
                 return true;
