@@ -3,7 +3,22 @@ import { StatusBarItem } from "./components/contract-status-bar-component/interf
 import { ContractStatusBarController } from "./controllers/contract-status-bar-controller/controller";
 import { render } from "./devutils/render";
 import style from "../styles/output.css"
+import { UserSelector } from "./components/user-selector/component";
+import { UserSelectorItem } from "./components/user-selector/interfaces";
 
+
+
+let el = document.getElementById("11")
+let us = new UserSelector({render}, "us1")
+let items: Array<UserSelectorItem> = [
+    {key: "g1", type: "group", text: "group1"},
+    {key: "u1", type: "user", text: "user1"},
+    {key: "u2", type: "user", text: "user2"},
+] 
+console.log("el", el)
+console.log("us", us)
+us.mount(el)
+us.setItems(items, "u1")
 
 declare function _define(arg0: string[], arg1: ($: any) => () => any): void
 _define(['jquery'], function ($: any) {
